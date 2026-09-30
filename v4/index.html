@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Student Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+    <div class="mb-6 border-b border-gray-100 pb-4">
+      <h1 class="text-xl font-bold text-gray-800">Student Portal</h1>
+      <p class="text-xs text-gray-500 mt-1">Simple Registration Form</p>
+    </div>
+    <section id="student-form"></section>
+  </div>
+  <script type="module">
+    import "https://cdn.jsdelivr.net/gh/keshavsoft/json-to-tag@main/docs/dist/v4/min.js";
+    const formSpec = {
+      tagName: "form",
+      attributes: {
+        id: "studentForm",
+        class: "space-y-4"
+      },
+      children: [
+        {
+          tagName: "div",
+          children: [
+            {
+              tagName: "label",
+              attributes: { for: "name", class: "block text-xs font-medium text-gray-600 mb-1" },
+              textContent: "Student Name"
+            },
+            {
+              tagName: "input",
+              attributes: {
+                id: "name",
+                type: "text",
+                placeholder: "Enter full name",
+                required: true,
+                class: "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+              }
+            }
+          ]
+        },
+        {
+          tagName: "div",
+          children: [
+            {
+              tagName: "label",
+              attributes: { for: "mobile", class: "block text-xs font-medium text-gray-600 mb-1" },
+              textContent: "Mobile Number"
+            },
+            {
+              tagName: "input",
+              attributes: {
+                id: "mobile",
+                type: "tel",
+                placeholder: "Enter mobile number",
+                required: true,
+                class: "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+              }
+            }
+          ]
+        },
+        {
+          tagName: "button",
+          attributes: {
+            type: "submit",
+            class: "w-full bg-blue-600 text-white font-medium py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+          },
+          textContent: "Register"
+        }
+      ]
+    };
+    const studentForm = window.ks.jsonToTag.buildSpecElement(formSpec);
+    studentForm.onsubmit = (e) => {
+      e.preventDefault();
+      console.log("Name:", document.getElementById("name").value);
+      console.log("Mobile:", document.getElementById("mobile").value);
+    };
+    document.querySelector("#student-form").append(studentForm);
+  </script>
+</body>
+</html>

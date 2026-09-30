@@ -1,0 +1,453 @@
+SIMPLE STUDENT REGISTRATION FORM
+================================
+
+1. PROJECT DESCRIPTION
+----------------------
+
+This project creates a simple Student Registration Form using:
+
+- HTML
+- Tailwind CSS CDN
+- JavaScript
+- json-to-tag CDN
+- JSON-based DOM generation
+
+The form contains:
+
+- Student Name
+- Mobile Number
+- Register button
+
+
+2. CDN USED
+-----------
+
+This project uses two CDN resources.
+
+
+A. TAILWIND CSS CDN
+-------------------
+
+The following CDN is used:
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+Purpose:
+
+Tailwind CSS is used to style the webpage and form.
+
+Examples of Tailwind CSS classes used:
+
+bg-gray-100
+min-h-screen
+flex
+items-center
+justify-center
+p-4
+w-full
+max-w-sm
+bg-white
+border
+rounded-xl
+shadow-sm
+p-6
+text-xl
+font-bold
+text-gray-800
+text-xs
+text-gray-500
+mb-6
+border-b
+pb-4
+space-y-4
+w-full
+rounded-lg
+py-2
+bg-blue-600
+text-white
+hover:bg-blue-700
+
+
+B. JSON-TO-TAG CDN
+------------------
+
+The following JavaScript CDN is used:
+
+import "https://cdn.jsdelivr.net/gh/keshavsoft/json-to-tag@main/docs/dist/v4/min.js";
+
+Purpose:
+
+The json-to-tag library converts the JavaScript object specification into actual HTML DOM elements.
+
+Important:
+
+json-to-tag is a JavaScript library.
+
+It is NOT a CSS library.
+
+
+3. CUSTOM CSS
+-------------
+
+This project does not contain custom CSS.
+
+There is:
+
+- No separate CSS file
+- No <style> block
+- No style="" attribute
+
+All styling is done using Tailwind CSS utility classes.
+
+
+4. PAGE STRUCTURE
+-----------------
+
+The page contains:
+
+- HTML document
+- Head section
+- Tailwind CSS CDN
+- Body section
+- Student Portal card
+- Dynamic form container
+- JavaScript module
+
+
+5. PAGE BACKGROUND
+------------------
+
+The body uses the following Tailwind classes:
+
+bg-gray-100
+min-h-screen
+flex
+items-center
+justify-center
+p-4
+
+These classes create:
+
+- Light gray background
+- Full screen height
+- Flexbox layout
+- Centered content
+- Padding around the page
+
+
+6. MAIN CARD
+------------
+
+The main registration card uses:
+
+w-full
+max-w-sm
+bg-white
+border
+border-gray-200
+rounded-xl
+shadow-sm
+p-6
+
+This creates a small white card centered on the page.
+
+
+7. HEADER SECTION
+-----------------
+
+The header contains:
+
+Student Portal
+
+Simple Registration Form
+
+The header uses Tailwind classes for:
+
+- Font size
+- Font weight
+- Text color
+- Margin
+- Border
+- Padding
+
+
+8. DYNAMIC FORM CONTAINER
+-------------------------
+
+The following section is used as the form container:
+
+<section id="student-form"></section>
+
+The form is not directly written inside this section.
+
+JavaScript dynamically creates the form and inserts it into this section.
+
+
+9. FORM SPECIFICATION
+---------------------
+
+The complete form structure is stored in:
+
+const formSpec = {
+    ...
+};
+
+This JavaScript object describes the HTML form.
+
+It contains:
+
+- Form element
+- Student Name field
+- Mobile Number field
+- Register button
+
+
+10. FORM ELEMENT
+----------------
+
+The root element is:
+
+tagName: "form"
+
+The form has:
+
+ID:
+studentForm
+
+Class:
+space-y-4
+
+The space-y-4 Tailwind class adds vertical spacing between form elements.
+
+
+11. STUDENT NAME FIELD
+----------------------
+
+The Student Name field contains:
+
+Label:
+Student Name
+
+Input type:
+text
+
+Input ID:
+name
+
+Placeholder:
+Enter full name
+
+Required:
+Yes
+
+The input is styled using Tailwind CSS classes.
+
+
+12. MOBILE NUMBER FIELD
+-----------------------
+
+The Mobile Number field contains:
+
+Label:
+Mobile Number
+
+Input type:
+tel
+
+Input ID:
+mobile
+
+Placeholder:
+Enter mobile number
+
+Required:
+Yes
+
+
+13. REGISTER BUTTON
+-------------------
+
+The button contains:
+
+Text:
+Register
+
+Type:
+submit
+
+The button uses Tailwind classes for:
+
+- Blue background
+- White text
+- Rounded corners
+- Padding
+- Hover effect
+- Transition effect
+
+
+14. JSON-TO-TAG FUNCTION
+------------------------
+
+The following code converts the form specification into an actual HTML element:
+
+const studentForm =
+  window.ks.jsonToTag.buildSpecElement(formSpec);
+
+
+The generated form is stored in:
+
+studentForm
+
+
+15. FORM SUBMISSION
+-------------------
+
+The form uses:
+
+studentForm.onsubmit = (e) => {
+    e.preventDefault();
+
+    console.log(
+        "Name:",
+        document.getElementById("name").value
+    );
+
+    console.log(
+        "Mobile:",
+        document.getElementById("mobile").value
+    );
+};
+
+
+16. PREVENT DEFAULT
+-------------------
+
+The following code:
+
+e.preventDefault();
+
+prevents the browser from refreshing the page when the form is submitted.
+
+
+17. GET STUDENT NAME
+--------------------
+
+The Student Name is read using:
+
+document.getElementById("name").value
+
+The value is printed in the browser console.
+
+
+18. GET MOBILE NUMBER
+---------------------
+
+The Mobile Number is read using:
+
+document.getElementById("mobile").value
+
+The value is printed in the browser console.
+
+
+19. ADDING FORM TO THE PAGE
+--------------------------
+
+The generated form is added to the page using:
+
+document.querySelector("#student-form").append(studentForm);
+
+This finds:
+
+<section id="student-form"></section>
+
+and inserts the generated form inside it.
+
+
+20. TECHNOLOGIES USED
+---------------------
+
+HTML
+Tailwind CSS
+JavaScript
+json-to-tag
+JSON-based DOM generation
+
+
+21. CSS SUMMARY
+---------------
+
+Custom CSS:
+NO
+
+Separate CSS file:
+NO
+
+<style> block:
+NO
+
+Inline CSS:
+NO
+
+Tailwind CSS:
+YES
+
+Tailwind CSS CDN:
+YES
+
+
+22. JAVASCRIPT SUMMARY
+----------------------
+
+JavaScript is used for:
+
+- Loading json-to-tag
+- Creating the form from the formSpec object
+- Handling form submission
+- Reading Student Name
+- Reading Mobile Number
+- Printing form data in the browser console
+
+
+23. COMPLETE FLOW
+-----------------
+
+HTML Page
+    ↓
+Tailwind CSS CDN loads
+    ↓
+json-to-tag JavaScript CDN loads
+    ↓
+formSpec object is created
+    ↓
+buildSpecElement() creates the form
+    ↓
+Form is stored in studentForm
+    ↓
+Submit event is attached
+    ↓
+Form is added to #student-form
+    ↓
+User enters Student Name
+    ↓
+User enters Mobile Number
+    ↓
+User clicks Register
+    ↓
+Page refresh is prevented
+    ↓
+Name and Mobile Number
+are printed in Browser Console
+
+
+24. FINAL SUMMARY
+-----------------
+
+This is a simple dynamic Student Registration Form.
+
+Tailwind CSS is used only for styling.
+
+json-to-tag is used to dynamically create the HTML form from a JavaScript object.
+
+JavaScript handles form submission and reads the entered student information.
+
+No custom CSS is used in this project.
