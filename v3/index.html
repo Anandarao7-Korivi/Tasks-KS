@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Student Registration</title>
+  <title>Student Registration</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-    <div class="mb-6 border-b border-gray-100 pb-4">
-      <h1 class="text-xl font-bold text-gray-800">Student Portal</h1>
-      <p class="text-xs text-gray-500 mt-1">Simple Registration Form</p>
+<body class="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-slate-900 flex items-center justify-center p-6">
+  <div class="fixed top-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
+  <div class="fixed bottom-10 right-10 w-52 h-52 bg-indigo-500/20 rounded-full blur-3xl"></div>
+
+  <div class="relative w-full max-w-md bg-white/95 backdrop-blur-xl rounded-[32px] shadow-2xl overflow-hidden">
+    <div class="relative px-8 pt-8 pb-10 bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600">
+      <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10"></div>
+      <div class="absolute -bottom-12 -left-10 w-28 h-28 rounded-full bg-white/10"></div>
+      <div class="relative">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-indigo-100 text-xs font-semibold tracking-[3px] uppercase">Welcome</p>
+            <h1 class="text-white text-3xl font-bold mt-2">Student Portal</h1>
+          </div>
+          <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl shadow-lg">🎓</div>
+        </div>
+        <p class="text-indigo-100 text-sm mt-5">Start your registration journey with us.</p>
+      </div>
     </div>
     <section id="student-form"></section>
   </div>
@@ -20,46 +33,92 @@
       tagName: "form",
       attributes: {
         id: "studentForm",
-        class: "space-y-4"
+        class: "p-8"
       },
       children: [
         {
           tagName: "div",
+          attributes: { class: "mb-7" },
           children: [
             {
-              tagName: "label",
-              attributes: { for: "name", class: "block text-xs font-medium text-gray-600 mb-1" },
-              textContent: "Student Name"
+              tagName: "h2",
+              attributes: { class: "text-2xl font-bold text-gray-800" },
+              textContent: "Create Registration"
             },
             {
-              tagName: "input",
-              attributes: {
-                id: "name",
-                type: "text",
-                placeholder: "Enter full name",
-                required: true,
-                class: "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
-              }
+              tagName: "div",
+              attributes: { class: "flex items-center gap-2 mt-2" },
+              children: [
+                { tagName: "div", attributes: { class: "h-1 w-10 rounded-full bg-indigo-600" } },
+                { tagName: "div", attributes: { class: "h-1 w-3 rounded-full bg-purple-300" } },
+                { tagName: "div", attributes: { class: "h-1 w-3 rounded-full bg-gray-200" } }
+              ]
             }
           ]
         },
         {
           tagName: "div",
+          attributes: { class: "mb-5" },
           children: [
             {
               tagName: "label",
-              attributes: { for: "mobile", class: "block text-xs font-medium text-gray-600 mb-1" },
+              attributes: { for: "name", class: "block text-sm font-semibold text-gray-700 mb-2" },
+              textContent: "Student Name"
+            },
+            {
+              tagName: "div",
+              attributes: { class: "relative" },
+              children: [
+                {
+                  tagName: "div",
+                  attributes: { class: "absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600" },
+                  textContent: "👤"
+                },
+                {
+                  tagName: "input",
+                  attributes: {
+                    id: "name",
+                    name: "student",
+                    type: "text",
+                    placeholder: "Enter your full name",
+                    required: true,
+                    class: "w-full pl-16 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-800 placeholder-gray-400 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition duration-300"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          tagName: "div",
+          attributes: { class: "mb-7" },
+          children: [
+            {
+              tagName: "label",
+              attributes: { for: "mobile", class: "block text-sm font-semibold text-gray-700 mb-2" },
               textContent: "Mobile Number"
             },
             {
-              tagName: "input",
-              attributes: {
-                id: "mobile",
-                type: "tel",
-                placeholder: "Enter mobile number",
-                required: true,
-                class: "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
-              }
+              tagName: "div",
+              attributes: { class: "relative" },
+              children: [
+                {
+                  tagName: "div",
+                  attributes: { class: "absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600" },
+                  textContent: "📱"
+                },
+                {
+                  tagName: "input",
+                  attributes: {
+                    id: "mobile",
+                    name: "phone",
+                    type: "tel",
+                    placeholder: "Enter your mobile number",
+                    required: true,
+                    class: "w-full pl-16 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-800 placeholder-gray-400 outline-none focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition duration-300"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -67,17 +126,49 @@
           tagName: "button",
           attributes: {
             type: "submit",
-            class: "w-full bg-blue-600 text-white font-medium py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+            class: "group relative w-full overflow-hidden py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-fuchsia-600 text-white font-semibold shadow-lg shadow-purple-200 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
           },
-          textContent: "Register"
+          children: [
+            {
+              tagName: "span",
+              attributes: { class: "relative z-10 flex items-center justify-center" },
+              children: [
+                {
+                  tagName: "span",
+                  textContent: "Register Now"
+                },
+                {
+                  tagName: "span",
+                  attributes: { class: "ml-2 group-hover:ml-4 transition-all" },
+                  textContent: "→"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          tagName: "div",
+          attributes: { class: "flex items-center justify-center gap-2 mt-6" },
+          children: [
+            {
+              tagName: "span",
+              attributes: { class: "text-green-500" },
+              textContent: "✓"
+            },
+            {
+              tagName: "p",
+              attributes: { class: "text-xs text-gray-400" },
+              textContent: "Your information is safe and secure"
+            }
+          ]
         }
       ]
     };
     const studentForm = window.ks.jsonToTag.buildSpecElement(formSpec);
     studentForm.onsubmit = (e) => {
       e.preventDefault();
-      console.log("Name:", document.getElementById("name").value);
-      console.log("Mobile:", document.getElementById("mobile").value);
+      console.log("Student Name:", document.getElementById("name").value);
+      console.log("Mobile Number:", document.getElementById("mobile").value);
     };
     document.querySelector("#student-form").append(studentForm);
   </script>
