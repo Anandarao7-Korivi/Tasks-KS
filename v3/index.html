@@ -3,136 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Registration</title>
+  <title>Student Registration - Tailwind</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-slate-900 flex items-center justify-center p-6">
-  <div class="fixed top-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
-  <div class="fixed bottom-10 right-10 w-52 h-52 bg-indigo-500/20 rounded-full blur-3xl"></div>
-  <div class="relative w-full max-w-md bg-white/95 backdrop-blur-xl rounded-[32px] shadow-2xl overflow-hidden">
+  <div class="relative w-full max-w-md bg-white rounded-[32px] shadow-2xl overflow-hidden">
+    <!-- Header -->
     <div class="relative px-8 pt-8 pb-10 bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600">
-      <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10"></div>
-      <div class="absolute -bottom-12 -left-10 w-28 h-28 rounded-full bg-white/10"></div>
-      <div class="relative">
-        <div class="flex items-center justify-between">
-          <div>
-            <p class="text-indigo-100 text-xs font-semibold tracking-[3px] uppercase">Welcome</p>
-            <h1 class="text-white text-3xl font-bold mt-2">Student Portal</h1>
-          </div>
-          <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl shadow-lg">🎓</div>
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-indigo-100 text-xs font-semibold tracking-widest uppercase">Welcome</p>
+          <h1 class="text-white text-3xl font-bold mt-2">Student Portal</h1>
         </div>
-        <p class="text-indigo-100 text-sm mt-5">Start your registration journey with us.</p>
+        <div class="w-16 h-16 rounded-2xl bg-white/20 border border-white/20 flex items-center justify-center text-3xl shadow-lg">
+          🎓
+        </div>
       </div>
+      <p class="text-indigo-100 text-sm mt-5">Start your registration journey with us.</p>
     </div>
-    <section id="student-form"></section>
+    <form id="studentFormTailwind" class="p-8">
+      <div class="mb-7">
+        <h2 class="text-2xl font-bold text-gray-800">Create Registration</h2>
+        <div class="flex items-center gap-2 mt-2">
+          <div class="h-1 w-10 rounded-full bg-indigo-600"></div>
+          <div class="h-1 w-3 rounded-full bg-purple-300"></div>
+          <div class="h-1 w-3 rounded-full bg-gray-200"></div>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Student Name</label>
+        <div class="relative">
+          <div class="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600">
+            👤
+          </div>
+          <input type="text" id="name" name="student" placeholder="Enter your full name" required class="w-full pl-16 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-800 placeholder-gray-400 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition duration-300">
+        </div>
+      </div>
+      <div class="mb-7">
+        <label for="mobile" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number</label>
+        <div class="relative">
+          <div class="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+            📱
+          </div>
+          <input type="tel" id="mobile" name="phone" placeholder="Enter your mobile number" required class="w-full pl-16 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-800 placeholder-gray-400 outline-none focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition duration-300">
+        </div>
+      </div>
+      <button type="submit" class="group relative w-full overflow-hidden py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-fuchsia-600 text-white font-semibold shadow-lg shadow-purple-200 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer">
+        <span class="relative z-10 flex items-center justify-center">
+          <span>Register Now</span>
+          <span class="ml-2 group-hover:ml-4 transition-all">→</span>
+        </span>
+      </button>
+      <div class="flex items-center justify-center gap-2 mt-6">
+        <span class="text-green-500">✓</span>
+        <p class="text-xs text-gray-400">Your information is safe and secure</p>
+      </div>
+    </form>
   </div>
-  <script type="module">
-
-import "https://cdn.jsdelivr.net/gh/keshavsoft/json-to-tag@main/docs/dist/v4/min.js";
-
-    const formSpec = {
-      tagName: "form",
-      attributes: {
-        id: "studentForm",
-        class: "p-8"
-      },
-      children: [
-        {
-          tagName: "div",attributes: { class: "mb-7" },
-          children: [
-            {
-              tagName: "h2",attributes: { class: "text-2xl font-bold text-gray-800" },textContent: "Create Registration"
-            },
-            {
-              tagName: "div",attributes: { class: "flex items-center gap-2 mt-2" },
-              children: [
-                { tagName: "div", attributes: { class: "h-1 w-10 rounded-full bg-indigo-600" } },
-                { tagName: "div", attributes: { class: "h-1 w-3 rounded-full bg-purple-300" } },
-                { tagName: "div", attributes: { class: "h-1 w-3 rounded-full bg-gray-200" } }
-              ]
-            }
-          ]
-        },
-        {
-          tagName: "div",attributes: { class: "mb-5" },
-          children: [
-            {
-              tagName: "label",attributes: { for: "name", class: "block text-sm font-semibold text-gray-700 mb-2" },textContent: "Student Name"
-            },
-            {
-              tagName: "div",attributes: { class: "relative" },
-              children: [
-                {
-                  tagName: "div",attributes: { class: "absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600" },textContent: "👤"
-                },
-                {
-                  tagName: "input",
-                  attributes: {id: "name",name: "student",type: "text",placeholder: "Enter your full name",required: true,class: "w-full pl-16 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-800 placeholder-gray-400 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition duration-300"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          tagName: "div",attributes: { class: "mb-7" },
-          children: [
-            {
-              tagName: "label",attributes: { for: "mobile", class: "block text-sm font-semibold text-gray-700 mb-2" },textContent: "Mobile Number"
-            },
-            {
-              tagName: "div",attributes: { class: "relative" },
-              children: [
-                {
-                  tagName: "div",attributes: { class: "absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600" },textContent: "📱"
-                },
-                {
-                  tagName: "input",
-                  attributes: {id: "mobile",name: "phone",type: "tel",placeholder: "Enter your mobile number",required: true,class: "w-full pl-16 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-800 placeholder-gray-400 outline-none focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition duration-300"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          tagName: "button",attributes: {type: "submit",class: "group relative w-full overflow-hidden py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-fuchsia-600 text-white font-semibold shadow-lg shadow-purple-200 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
-          },
-          children: [
-            {
-              tagName: "span",
-              attributes: { class: "relative z-10 flex items-center justify-center" },
-              children: [
-                {
-                  tagName: "span",textContent: "Register Now"
-                },
-                {
-                  tagName: "span",attributes: { class: "ml-2 group-hover:ml-4 transition-all" },textContent: "→"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          tagName: "div",attributes: { class: "flex items-center justify-center gap-2 mt-6" },
-          children: [
-            {
-              tagName: "span",attributes: { class: "text-green-500" },textContent: "✓"
-            },
-            {
-              tagName: "p",attributes: { class: "text-xs text-gray-400" },textContent: "Your information is safe and secure"
-            }
-          ]
-        }
-      ]
-    };
-    const studentForm = window.ks.jsonToTag.buildSpecElement(formSpec);
-    studentForm.onsubmit = (e) => {
-      e.preventDefault();
-      console.log("Student Name:", document.getElementById("name").value);
-      console.log("Mobile Number:", document.getElementById("mobile").value);
-    };
-    document.querySelector("#student-form").append(studentForm);
-  </script>
 </body>
 </html>
