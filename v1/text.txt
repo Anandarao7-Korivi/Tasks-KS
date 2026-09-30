@@ -1,0 +1,119 @@
+Student Registration Form
+=========================
+
+Purpose:
+This HTML code creates a simple Student Registration Form.
+It accepts:
+1. Student Name
+2. Student Mobile Number
+
+HTML Structure:
+----------------
+
+1. <!DOCTYPE html>
+   - Defines the document as HTML5.
+
+2. <html>
+   - The main container of the HTML page.
+
+3. <head>
+   - Contains page information such as the title.
+
+4. <title>Student Registration</title>
+   - Sets the browser tab title to "Student Registration".
+
+5. <body>
+   - Contains the visible content of the webpage.
+
+Form:
+-----
+<form id="studentForm">
+   - Creates the student registration form.
+   - The form has an ID called "studentForm".
+
+Student Name:
+-------------
+
+<label>Student Name:</label>
+<input type="text" id="studentName" required>
+
+- The label displays "Student Name".
+- The input allows the user to enter the student's name.
+- id="studentName" identifies the input.
+- required means the field cannot be empty.
+
+Student Mobile Number:
+----------------------
+
+<label>Student Mobile Number:</label>
+<input type="tel" id="mobileNumber" required>
+
+- The label displays "Student Mobile Number".
+- The input accepts a telephone/mobile number.
+- id="mobileNumber" identifies the input.
+- required means the field cannot be empty.
+
+Save Button:
+------------
+
+<button type="submit">Save</button>
+
+- Creates a Save button.
+- type="submit" submits the form.
+
+JavaScript:
+-----------
+
+const form = document.getElementById("studentForm");
+- Gets the form using its ID.
+- Stores it in the variable "form".
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+- Detects when the form is submitted.
+- event.preventDefault() prevents the page from refreshing.
+
+Student Object:
+---------------
+const student = {
+    studentName: document.getElementById("studentName").value,
+    mobileNumber: document.getElementById("mobileNumber").value
+};
+
+- Creates a JavaScript object called "student".
+- Gets the entered Student Name.
+- Gets the entered Mobile Number.
+
+Example:
+
+If the user enters:
+
+Student Name: Anand
+Mobile Number: 9876543210
+
+The student object will be:
+
+{
+    studentName: "Anand",
+    mobileNumber: "9876543210"
+}
+
+Console Output:
+---------------
+console.log(student);
+
+- Displays the student object in the browser's Developer Console.
+- The data is NOT saved to a database or text file.
+- It is only displayed in the console.
+
+Important:
+----------
+This code currently collects the student's name and mobile number and displays them in the console.
+
+It does NOT:
+1. Save data to a text file.
+2. Save data to a database.
+3. Send data to a server.
+
+To permanently save the data, a backend, database, or file-download mechanism is required.
