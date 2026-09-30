@@ -1,0 +1,391 @@
+STUDENT REGISTRATION FORM
+========================
+
+PURPOSE
+-------
+This project creates a Student Registration Form using:
+1. HTML
+2. Tailwind CSS
+3. JavaScript
+4. JSON specification
+5. KeshavSoft json-to-tag library
+
+The form contains:
+- Student Name
+- Mobile Number
+- Register button
+
+When the user clicks Register, the entered name and mobile number are displayed in the browser console.
+
+1. HTML DOCUMENT
+----------------
+<!DOCTYPE html>
+This tells the browser that the document uses HTML5.
+
+2. PAGE TITLE
+-------------
+<title>Student Registration</title>
+This sets the browser tab title to:
+Student Registration
+
+3. TAILWIND CSS
+---------------
+<script src="https://cdn.tailwindcss.com"></script>
+This loads Tailwind CSS from the CDN.
+Tailwind CSS is used to style the form without writing separate CSS code.
+
+Example Tailwind classes used:
+bg-gray-100
+max-w-md
+mx-auto
+mt-12
+bg-white
+p-6
+rounded-2xl
+shadow-lg
+text-2xl
+font-bold
+text-center
+text-blue-600
+
+4. BODY
+-------
+<body class="bg-gray-100">
+The body gets a light gray background using:
+bg-gray-100
+
+5. FORM CONTAINER
+-----------------
+<div id="student-form" class="max-w-md mx-auto mt-12"></div>
+This div is the container where the form will be inserted.
+id="student-form"
+- Used to find the container using JavaScript.
+
+max-w-md
+- Limits the maximum width of the form.
+
+mx-auto
+- Centers the form horizontally.
+
+mt-12
+- Adds top margin.
+
+6. MODULE SCRIPT
+----------------
+<script type="module">
+
+This allows JavaScript modules to be used.
+
+The project imports the json-to-tag library.
+
+
+7. JSON-TO-TAG LIBRARY
+----------------------
+
+import "https://cdn.jsdelivr.net/gh/keshavsoft/json-to-tag@main/docs/dist/v4/min.js";
+
+This imports the KeshavSoft json-to-tag library.
+
+The library allows us to create HTML elements using a JavaScript object specification instead of writing every HTML element directly.
+
+
+8. FORM SPECIFICATION
+---------------------
+
+const formSpec = {
+
+The variable formSpec contains the complete structure of the Student Registration Form.
+
+It describes:
+
+- Form
+- Heading
+- Labels
+- Input fields
+- Register button
+- CSS classes
+- HTML attributes
+
+9. FORM ELEMENT
+---------------
+{
+  tagName: "form",
+  classList: "bg-white p-6 rounded-2xl shadow-lg",
+  children: [...]
+}
+
+tagName: "form"
+- Creates a HTML <form> element.
+
+classList
+- Adds Tailwind CSS classes to the form.
+
+children
+- Contains all elements inside the form.
+
+
+10. FORM HEADING
+----------------
+{
+  tagName: "h2",
+  textContent: "Student Registration",
+  classList: "text-2xl font-bold text-center text-gray-800 mb-6"
+}
+
+tagName: "h2"
+- Creates an <h2> heading.
+
+textContent
+- Sets the heading text to:
+
+Student Registration
+
+classList
+- Applies Tailwind CSS styling.
+
+11. STUDENT NAME LABEL
+----------------------
+{
+  tagName: "label",
+  textContent: "Student Name"
+}
+
+This creates the label:
+
+Student Name
+
+12. STUDENT NAME INPUT
+----------------------
+{
+  tagName: "input",
+  classList: "...",
+  attributes: {
+    type: "text",
+    name: "student",
+    placeholder: "Enter your name"
+  }
+}
+
+This creates a text input field.
+
+type: "text"
+- Allows text input.
+
+name: "student"
+- Gives the input the name "student".
+
+placeholder
+- Displays:
+
+Enter your name
+
+The input can be accessed using:
+
+form.elements.student
+
+13. MOBILE NUMBER LABEL
+-----------------------
+The second label displays:
+
+Mobile Number
+
+
+14. MOBILE NUMBER INPUT
+-----------------------
+{
+  tagName: "input",
+  attributes: {
+    type: "tel",
+    name: "phone",
+    placeholder: "Enter mobile number"
+  }
+}
+
+type: "tel"
+- Creates a telephone/mobile number input.
+
+name: "phone"
+- Gives the input the name "phone".
+
+placeholder
+- Displays:
+
+Enter mobile number
+
+The input can be accessed using:
+
+form.elements.phone
+
+
+15. REGISTER BUTTON
+-------------------
+
+{
+  tagName: "button",
+  textContent: "Register",
+  attributes: {
+    type: "submit"
+  }
+}
+
+This creates the Register button.
+
+type: "submit"
+- Submits the form when clicked.
+
+
+16. BUILDING THE FORM
+---------------------
+
+const form = window.ks.jsonToTag.buildSpecElement(formSpec);
+
+This is the main function that converts the JSON specification into actual HTML DOM elements.
+
+The formSpec object is passed to:
+
+buildSpecElement()
+
+The returned result is stored in:
+
+form
+
+
+17. FORM SUBMIT EVENT
+---------------------
+
+form.onsubmit = (event) => {
+
+This runs when the user clicks the Register button.
+
+
+18. PREVENTING PAGE REFRESH
+---------------------------
+
+event.preventDefault();
+
+Normally, submitting a form refreshes or navigates the page.
+
+event.preventDefault()
+stops the default form submission behavior.
+
+19. GETTING STUDENT NAME
+------------------------
+
+console.log("Name:", form.elements.student.value);
+
+This gets the value entered in the Student Name field.
+
+form.elements.student
+- Finds the input using name="student".
+
+.value
+- Gets the entered value.
+
+Example:
+
+Name: Anand
+
+20. GETTING MOBILE NUMBER
+-------------------------
+console.log("Mobile:", form.elements.phone.value);
+
+This gets the value entered in the Mobile Number field.
+
+form.elements.phone
+- Finds the input using name="phone".
+
+.value
+- Gets the entered mobile number.
+
+Example:
+
+Mobile: 9876543210
+
+21. ADDING FORM TO THE PAGE
+---------------------------
+document.querySelector("#student-form").append(form);
+
+This finds:
+
+<div id="student-form"></div>
+
+and adds the generated form inside it.
+
+querySelector("#student-form")
+- Finds the container.
+
+append(form)
+- Adds the generated form to the container.
+
+22. COMPLETE FLOW
+-----------------
+The application works in the following order:
+
+1. HTML page loads.
+2. Tailwind CSS is loaded.
+3. json-to-tag library is imported.
+4. formSpec object defines the form.
+5. buildSpecElement() converts the specification into HTML elements.
+6. The form is stored in the "form" variable.
+7. Submit event is added to the form.
+8. The form is added to the webpage.
+9. User enters Student Name.
+10. User enters Mobile Number.
+11. User clicks Register.
+12. Page refresh is prevented.
+13. Student Name is read.
+14. Mobile Number is read.
+15. Both values are displayed in the browser console.
+
+23. IMPORTANT NOTE
+------------------
+
+This code does NOT save the student information permanently.
+
+It only prints the data in the browser console using:
+
+console.log()
+
+For example:
+Name: Anand
+Mobile: 9876543210
+
+To permanently save the student information, a backend API, database, local storage, or another storage method would be required.
+
+24. TECHNOLOGIES USED
+---------------------
+HTML
+- Provides the webpage structure.
+
+Tailwind CSS
+- Provides styling.
+
+JavaScript
+- Handles the form submission and reads input values.
+
+JSON Specification
+- Defines the structure of the form.
+
+KeshavSoft json-to-tag
+- Converts the JSON specification into actual DOM elements.
+
+25. MAIN CONCEPT
+----------------
+
+The main concept of this project is:
+
+JSON Specification
+        ↓
+json-to-tag Library
+        ↓
+HTML DOM Elements
+        ↓
+Student Registration Form
+        ↓
+User Enters Data
+        ↓
+Submit Form
+        ↓
+JavaScript Reads Data
+        ↓
+Console Output
